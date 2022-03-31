@@ -1,14 +1,19 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using PsicosoftPuntoNet.Datos;
 using PsicosoftPuntoNet.Models;
 
 namespace PsicosoftPuntoNet.Controllers
 {
     public class PacienteController : Controller
     {
+        private readonly ApplicationDbContext _db;
+        public PacienteController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         // GET: PacienteController
-
-
         public List<Pacientes> ListadoGeneralDePacientes()
         {
             return new List<Pacientes>()
@@ -78,17 +83,20 @@ namespace PsicosoftPuntoNet.Controllers
 
         // GET: PacientesController
 
-        public ActionResult ListadoPacientes()
+        public async Task<IActionResult> ListadoPacientes()
         {
             //Almaceno en la variable *list_pacientes la lista de productos*
-            var list_Pacientes = ListadoGeneralDePacientes();
+            //var list_Pacientes = ListadoGeneralDePacientes();
+
+            //Obtengo las pacientes de la base de datos
+            var listaPacientes = await _db.Paciente.ToListAsync();
 
             //Realizo una instancia de la clase que contiene la lista de pacientes
             var modeloPacientes = new PacientesIndexModelView();
 
             //Lleno el atributo de la clase PacienteIndexModelView --> ListadoDePaciente
             //La lleno con la variable que contiene el listado creado arriba
-            modeloPacientes.Listado_de_pacientes = list_Pacientes;
+            modeloPacientes.Listado_de_pacientes = listaPacientes;
 
             return View(modeloPacientes);
         }
@@ -100,7 +108,7 @@ namespace PsicosoftPuntoNet.Controllers
         }
 
         // GET: PacienteController/Create
-        public ActionResult Create()
+        public ActionResult Registrar()
         {
             return View();
         }
