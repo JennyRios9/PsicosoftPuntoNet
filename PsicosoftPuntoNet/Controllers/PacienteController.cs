@@ -116,58 +116,74 @@ namespace PsicosoftPuntoNet.Controllers
         // POST: PacienteController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Registrar(Pacientes paciente)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                _db.Paciente.Add(paciente); 
+                _db.SaveChanges();
+                return RedirectToAction("ListadoPacientes");   
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: PacienteController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
-            return View();
+            if (id != 0)
+            {
+                var paciente = _db.Paciente.Find(id);
+                if (paciente != null)
+                {
+                    return View(paciente);
+                }
+               
+            }
+            return NotFound(); 
         }
 
         // POST: PacienteController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Editar(Pacientes paciente)
         {
-            try
+           if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                _db.Paciente.Update(paciente);
+                _db.SaveChanges();
+                return RedirectToAction("ListadoPacientes");
             }
-            catch
-            {
-                return View();
-            }
+           return View(paciente);   
+
         }
 
         // GET: PacienteController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Eliminar(int id)
         {
-            return View();
+            if (id != 0)
+            {
+                var paciente = _db.Paciente.Find(id);
+                if (paciente != null)
+                {
+                    return View(paciente);
+                }
+
+            }
+            return NotFound();
         }
 
         // POST: PacienteController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Eliminar(Pacientes paciente)
         {
-            try
+            if (paciente != null)
             {
-                return RedirectToAction(nameof(Index));
+                _db.Paciente.Remove(paciente);
+                _db.SaveChanges();
+                return RedirectToAction("ListadoPacientes");
             }
-            catch
-            {
-                return View();
-            }
+            return NotFound();
         }
     }
 }
