@@ -21,12 +21,8 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="bi bi-list"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+     
+     
     </ul>
 
     <!-- Right navbar links -->
@@ -82,48 +78,40 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="bi bi-house-fill"></i>
-              <p>
-                Menu
-               <i class="bi bi-arrow-down-short"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+         with font-awesome or any other icon font library -->
               <li class="nav-item">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inicio</p>
-                </a>
+                  <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Inicio</p>
+                  </a>
+              </li>
+              <li class="nav-item ">
+                  <a asp-area="" asp-controller="Paciente" asp-action="ListadoPacientes" 
+                     class="nav-link ">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Pacientes</p>
+                  </a>
+
+              </li>
+              @*<li class="nav-item">
+                  <a class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Seguimiento actitudinal</p>
+                  </a>
               </li>
               <li class="nav-item">
-                <a asp-area="" asp-controller="Paciente" asp-action="ListadoPacientes" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pacientes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a  class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Seguimiento actitudinal</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a  asp-area="" asp-controller="Home" asp-action="Privacy" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Help</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-         
-               
-            
-        </ul>
+                  <a asp-area="" asp-controller="Home" asp-action="Privacy" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Help</p>
+                  </a>
+              </li>*@
+                      
+
+
+
+          </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -139,12 +127,12 @@
           <div class="col-sm-6">
             <h1>@ViewData["Title"]</h1>
           </div>
-          <div class="col-sm-6">
+          @*<div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
               <li class="breadcrumb-item active">Servicios</li>
             </ol>
-          </div>
+          </div>*@
         </div>
       </div><!-- /.container-fluid -->
 
