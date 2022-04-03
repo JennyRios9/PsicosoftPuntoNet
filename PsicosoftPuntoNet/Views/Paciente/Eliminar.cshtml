@@ -1,0 +1,60 @@
+﻿@model Pacientes
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+<div class="card">
+    <div class="card-body">
+        <div class="form-gorup row">
+            <h2 class="text-danger pl-3">¿Estas seguro que desea eliminar este paciente?</h2>
+        </div>
+        <form asp-action="Eliminar" method="post">
+
+            <div class="row">
+                <div class="col ">
+                    <div class="mb-3">
+                        <input asp-for="Id" hidden class="form-control" />
+                        <label asp-for="Nombre" class="form-label">Nombre</label>
+                        <input asp-for="Nombre" type="text"  disabled class="form-control" id="nombre">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Apellido" class="form-label">Apellido</label>
+                        <input asp-for="Apellido" type="text" disabled class="form-control" id="Apellido">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Edad" class="form-label">Edad</label>
+                        <input asp-for="Edad" type="number" disabled class="form-control" id="edad">
+                      
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Cedula" class="form-label">Cedula</label>
+                        <input asp-for="Cedula" type="text"disabled class="form-control" id="cedula">
+                        
+                    </div>
+                </div>
+                <div class="col ">
+                    <div class="mb-3">
+                        <label asp-for="telefono" class="form-label">Telefono</label>
+                        <input asp-for="telefono" type="text" disabled class="form-control" id="Telefono">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Direccion" class="form-label">Dirección</label>
+                        <input asp-for="Direccion" type="text" disabled class="form-control" id="direccion">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Acudiente" class="form-label">Acudiente</label>
+                        <input asp-for="Acudiente" type="text" disabled class="form-control" id="Acudiente">
+
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Si, confirmar</button>
+            <a asp-controller="Paciente" asp-action="ListadoPacientes" class="btn btn-danger">No, Cancelar</a>
+        </form>
+    </div>
+</div>
